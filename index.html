@@ -229,6 +229,146 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/17/%E7%BA%A6%E7%91%9F%E5%A4%AB%E7%8E%AF1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/17/%E7%BA%A6%E7%91%9F%E5%A4%AB%E7%8E%AF1/" itemprop="url">约瑟夫环1</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-17T16:15:24+08:00">
+                2020-02-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="约瑟夫（Josephu）环"><a href="#约瑟夫（Josephu）环" class="headerlink" title="约瑟夫（Josephu）环"></a>约瑟夫（Josephu）环</h1><p>百度：约瑟夫问题（有时也称为约瑟夫斯置换，是一个出现在计算机科学和数学中的问题。在计算机编程的算法中，类似问题又称为约瑟夫环。又称“丢手绢问题”.）</p>
+<h2 id="构建一个单项的环形链表"><a href="#构建一个单项的环形链表" class="headerlink" title="构建一个单项的环形链表"></a>构建一个单项的环形链表</h2><h3 id="定义一个节点类"><a href="#定义一个节点类" class="headerlink" title="定义一个节点类"></a>定义一个节点类</h3><ol>
+<li>先创建第一个节点，让first指向该节点，并形成环形；</li>
+<li>后面当我们每创建一个新的节点，就把该节点加入到已有的环形链表中即可.</li>
+</ol>
+<h2 id="遍历环形链表"><a href="#遍历环形链表" class="headerlink" title="遍历环形链表"></a>遍历环形链表</h2><ol>
+<li>先让一个辅助指针（变量）curBoy，指向first节点；</li>
+<li>然后通过一个while循环遍历该环形链表，当curBoy.next==first结束</li>
+</ol>
+<h2 id="环形出圈"><a href="#环形出圈" class="headerlink" title="环形出圈"></a>环形出圈</h2><p>根据用户的输入，生成一个小孩出圈的顺序</p>
+<p>n=5，即有5个人</p>
+<p>k=1，从第一个人开始报数</p>
+<p>m=2，数2下然后出圈</p>
+<ol>
+<li>需求创建一个辅助指针（变量）helper，事先应该指向环形链表的最后这个节点小孩报数前，先让first跟helper移动k-1次</li>
+<li>当小孩报数时，让first和helper指针同时移动m-1次</li>
+<li>这时就可以让first指向的小孩节点出圈</li>
+</ol>
+<p>first = first.next</p>
+<p>helper.next = first</p>
+<p>原来first指向的节点就没有任何引用==出圈回收</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/16/%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -764,7 +904,7 @@
               
                 <a href="/archives/%20%7C%7C%20archive">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
