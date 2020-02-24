@@ -229,6 +229,196 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/24/%E5%85%AB%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98-%E9%80%92%E5%BD%92%E5%9B%9E%E6%BA%AF%E5%AE%9E%E7%8E%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/24/%E5%85%AB%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98-%E9%80%92%E5%BD%92%E5%9B%9E%E6%BA%AF%E5%AE%9E%E7%8E%B0/" itemprop="url">八皇后问题(递归回溯实现)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-24T12:51:43+08:00">
+                2020-02-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>wiki：八皇后问题，是一个古老而著名的问题，是回溯算法的典型案例。该问题是国际西洋棋棋手马克斯·贝瑟尔于1848年提出：在8×8格的国际象棋上摆放八个皇后，使其不能互相攻击，即任意两个皇后都不能处于同一行、同一列或同一斜线上，问有多少种摆法。</p>
+<p>摆法（暴力）：</p>
+<ol>
+<li>第一个皇后先放在第一行第一列</li>
+<li>第二个皇后放在第二行第一列，然后判断是否跟前面的摆法的皇后冲突，如果冲突，则继续往第二列，第三列摆法，直到找到一个合适的或者达到最后一列</li>
+<li>继续第三个皇后，还是第一列，第二列，直到第八个皇后放在不冲突的位置，就算找到了一个正确解</li>
+<li>当得到一个正确解时，在栈回退到上一个栈时，就会开始回溯，即将第一个皇后放在第一列的所有正确解全部得到</li>
+<li>然后回头继续讲第一个皇后放到第二列，继续循环求解</li>
+</ol>
+<p>这里可以采用一维数组即可，queen[8],对应的queen下标代表第几个皇后，对应下标的值表示第几个皇后在第几列。而不用通过说利用二维数组表示8*8棋盘的位置，这样会浪费数组空间。<br>    package recall;</p>
+<pre><code>/**
+ * 概要
+ *
+ * @Author Ivan
+ * @vesion 1.0
+ * @since 0.1.0
+ */
+public class Queen8 {
+    public static void main(String[] args) {
+        Queen8 queen = new Queen8();
+        queen.way(0);
+        System.out.println(&quot;总共有&quot; + count + &quot;种解法&quot;);
+    }
+    int queen[] = new int[8];
+    static int count = 0;
+
+    /*
+     *  每一次递归时，都有一套for循环，当子函数执行完后，会回溯到上一层的for循环中（有点难理解）
+     *
+     *  @Param [n]
+     *  @Return void
+     *  @Author Ivan
+     */
+    private void way(int n){
+        if(n == 8){//当达到第九（n=8）个皇后时，即表示已找到正确解，输出并打印，然后回溯到上一层
+            print();
+            return;
+        }
+        for(int i = 0;i &lt; queen.length;i++){//每一个皇后都要进行for循环遍历完8列去找合适的位置
+            queen[n] = i;//将当前的皇后放在第i个位置
+            //判断当前皇后放到i位置时，是否会发生冲突
+            if(conflict(n)){
+                //如果不冲突，则开始递归，放入第n+1个皇后
+                way(n + 1);
+            }
+            //如果冲突，则接着for循环，将当前皇后的位置放到i+1列的位置
+        }
+    }
+    /*
+     * 判断是否当前皇后是否与前面所有已摆放的皇后位置上有冲突
+     *
+     *  @Param [n]
+     *  @Return boolean
+     *  @Author Ivan
+     */
+    private  boolean conflict(int n){
+        for(int i = 0;i &lt; n;i++){
+            //冲突的条件：与其他皇后在同一列，或者同一斜线
+            if(queen[i] == queen[n] || Math.abs(n - i) == Math.abs(queen[n] - queen[i])){
+                return false;
+            }
+        }
+        return true;
+    }
+    private  void print(){
+        for(int i = 0;i &lt; queen.length;i++){
+            System.out.print(queen[i] + &quot; &quot;);
+        }
+        count++;
+        System.out.println();
+    }
+}</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/17/%E7%BA%A6%E7%91%9F%E5%A4%AB%E7%8E%AF/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -248,7 +438,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/02/17/%E7%BA%A6%E7%91%9F%E5%A4%AB%E7%8E%AF/" itemprop="url">测试</a></h1>
+                <a class="post-title-link" href="/2020/02/17/%E7%BA%A6%E7%91%9F%E5%A4%AB%E7%8E%AF/" itemprop="url">约瑟夫环</a></h1>
         
 
         <div class="post-meta">
@@ -648,7 +838,7 @@
               
                 <a href="/archives/%20%7C%7C%20archive">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

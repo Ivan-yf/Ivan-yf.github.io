@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="#写在前面作为第一篇博客，有一些想说的，首先呢，想写博客很久了，从去年开始吧一直想写的，可惜太懒又一直想玩游戏就落下了，像最近在玩怪物猎人,从几天前创了这个博客后也一直没更新自己的第一篇.总之吧，什么都是兴趣最重要，然后本人也不属于聪明的那类人，归类于一般般吧，用来记录自己想记下的东西，写得应该也是自己看得懂，可能写出来的东西有些瑕疵的地方，也欢迎各位敲门.最后，不定时更新，可能一天，一周或者一个">
+<meta name="description" content="wiki：八皇后问题，是一个古老而著名的问题，是回溯算法的典型案例。该问题是国际西洋棋棋手马克斯·贝瑟尔于1848年提出：在8×8格的国际象棋上摆放八个皇后，使其不能互相攻击，即任意两个皇后都不能处于同一行、同一列或同一斜线上，问有多少种摆法。 摆法（暴力）：  第一个皇后先放在第一行第一列 第二个皇后放在第二行第一列，然后判断是否跟前面的摆法的皇后冲突，如果冲突，则继续往第二列，第三列摆法，直到">
 <meta property="og:type" content="article">
-<meta property="og:title" content="写在前面">
-<meta property="og:url" content="http://yoursite.com/2020/02/16/%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2/index.html">
+<meta property="og:title" content="八皇后问题(递归回溯实现)">
+<meta property="og:url" content="http://yoursite.com/2020/02/24/%E5%85%AB%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98-%E9%80%92%E5%BD%92%E5%9B%9E%E6%BA%AF%E5%AE%9E%E7%8E%B0/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="#写在前面作为第一篇博客，有一些想说的，首先呢，想写博客很久了，从去年开始吧一直想写的，可惜太懒又一直想玩游戏就落下了，像最近在玩怪物猎人,从几天前创了这个博客后也一直没更新自己的第一篇.总之吧，什么都是兴趣最重要，然后本人也不属于聪明的那类人，归类于一般般吧，用来记录自己想记下的东西，写得应该也是自己看得懂，可能写出来的东西有些瑕疵的地方，也欢迎各位敲门.最后，不定时更新，可能一天，一周或者一个">
+<meta property="og:description" content="wiki：八皇后问题，是一个古老而著名的问题，是回溯算法的典型案例。该问题是国际西洋棋棋手马克斯·贝瑟尔于1848年提出：在8×8格的国际象棋上摆放八个皇后，使其不能互相攻击，即任意两个皇后都不能处于同一行、同一列或同一斜线上，问有多少种摆法。 摆法（暴力）：  第一个皇后先放在第一行第一列 第二个皇后放在第二行第一列，然后判断是否跟前面的摆法的皇后冲突，如果冲突，则继续往第二列，第三列摆法，直到">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-02-16T15:22:33.425Z">
-<meta property="article:modified_time" content="2020-02-17T15:25:36.983Z">
+<meta property="article:published_time" content="2020-02-24T04:51:43.000Z">
+<meta property="article:modified_time" content="2020-02-24T04:52:19.078Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/02/16/写在前面/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/02/24/八皇后问题-递归回溯实现/"/>
 
 
 
 
 
-  <title>写在前面 | Hexo</title>
+  <title>八皇后问题(递归回溯实现) | Hexo</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/16/%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/24/%E5%85%AB%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98-%E9%80%92%E5%BD%92%E5%9B%9E%E6%BA%AF%E5%AE%9E%E7%8E%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">写在前面</h1>
+          <h1 class="post-title" itemprop="name headline">八皇后问题(递归回溯实现)</h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-16T23:22:33+08:00">
-                2020-02-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-24T12:51:43+08:00">
+                2020-02-24
               </time>
             
 
@@ -299,20 +299,78 @@
       
 
       
-        <p>#写在前面<br>作为第一篇博客，有一些想说的，首先呢，想写博客很久了，从去年开始吧一直想写的，可惜太懒又一直想玩游戏就落下了，像最近在玩怪物猎人,从几天前创了这个博客后也一直没更新自己的第一篇.总之吧，什么都是兴趣最重要，然后本人也不属于聪明的那类人，归类于一般般吧，用来记录自己想记下的东西，写得应该也是自己看得懂，可能写出来的东西有些瑕疵的地方，也欢迎各位敲门.最后，不定时更新，可能一天，一周或者一个月，一年那是不可能的.</p>
-<ul>
-<li>兴趣<ul>
-<li>游戏，逛微博（正在戒掉），写写代码或者看看文章</li>
-</ul>
-</li>
-<li>职业<ul>
-<li>学生</li>
-<li>未来：java程序猿，后端开发（这两者比较想要） </li>
-</ul>
-</li>
-</ul>
-<p>咳咳，好像也没什么好写的，最后补充，已有女朋友家中坐（手动狗头）.</p>
+        <p>wiki：八皇后问题，是一个古老而著名的问题，是回溯算法的典型案例。该问题是国际西洋棋棋手马克斯·贝瑟尔于1848年提出：在8×8格的国际象棋上摆放八个皇后，使其不能互相攻击，即任意两个皇后都不能处于同一行、同一列或同一斜线上，问有多少种摆法。</p>
+<p>摆法（暴力）：</p>
+<ol>
+<li>第一个皇后先放在第一行第一列</li>
+<li>第二个皇后放在第二行第一列，然后判断是否跟前面的摆法的皇后冲突，如果冲突，则继续往第二列，第三列摆法，直到找到一个合适的或者达到最后一列</li>
+<li>继续第三个皇后，还是第一列，第二列，直到第八个皇后放在不冲突的位置，就算找到了一个正确解</li>
+<li>当得到一个正确解时，在栈回退到上一个栈时，就会开始回溯，即将第一个皇后放在第一列的所有正确解全部得到</li>
+<li>然后回头继续讲第一个皇后放到第二列，继续循环求解</li>
+</ol>
+<p>这里可以采用一维数组即可，queen[8],对应的queen下标代表第几个皇后，对应下标的值表示第几个皇后在第几列。而不用通过说利用二维数组表示8*8棋盘的位置，这样会浪费数组空间。<br>    package recall;</p>
+<pre><code>/**
+ * 概要
+ *
+ * @Author Ivan
+ * @vesion 1.0
+ * @since 0.1.0
+ */
+public class Queen8 {
+    public static void main(String[] args) {
+        Queen8 queen = new Queen8();
+        queen.way(0);
+        System.out.println(&quot;总共有&quot; + count + &quot;种解法&quot;);
+    }
+    int queen[] = new int[8];
+    static int count = 0;
 
+    /*
+     *  每一次递归时，都有一套for循环，当子函数执行完后，会回溯到上一层的for循环中（有点难理解）
+     *
+     *  @Param [n]
+     *  @Return void
+     *  @Author Ivan
+     */
+    private void way(int n){
+        if(n == 8){//当达到第九（n=8）个皇后时，即表示已找到正确解，输出并打印，然后回溯到上一层
+            print();
+            return;
+        }
+        for(int i = 0;i &lt; queen.length;i++){//每一个皇后都要进行for循环遍历完8列去找合适的位置
+            queen[n] = i;//将当前的皇后放在第i个位置
+            //判断当前皇后放到i位置时，是否会发生冲突
+            if(conflict(n)){
+                //如果不冲突，则开始递归，放入第n+1个皇后
+                way(n + 1);
+            }
+            //如果冲突，则接着for循环，将当前皇后的位置放到i+1列的位置
+        }
+    }
+    /*
+     * 判断是否当前皇后是否与前面所有已摆放的皇后位置上有冲突
+     *
+     *  @Param [n]
+     *  @Return boolean
+     *  @Author Ivan
+     */
+    private  boolean conflict(int n){
+        for(int i = 0;i &lt; n;i++){
+            //冲突的条件：与其他皇后在同一列，或者同一斜线
+            if(queen[i] == queen[n] || Math.abs(n - i) == Math.abs(queen[n] - queen[i])){
+                return false;
+            }
+        }
+        return true;
+    }
+    private  void print(){
+        for(int i = 0;i &lt; queen.length;i++){
+            System.out.print(queen[i] + &quot; &quot;);
+        }
+        count++;
+        System.out.println();
+    }
+}</code></pre>
       
     </div>
     
@@ -336,15 +394,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2020/02/17/%E7%BA%A6%E7%91%9F%E5%A4%AB%E7%8E%AF/" rel="next" title="约瑟夫环">
+                <i class="fa fa-chevron-left"></i> 约瑟夫环
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/02/17/%E7%BA%A6%E7%91%9F%E5%A4%AB%E7%8E%AF/" rel="prev" title="约瑟夫环">
-                约瑟夫环 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
