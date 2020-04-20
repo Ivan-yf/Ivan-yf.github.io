@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="冒泡排序（Bubble Sort）冒泡排序是用得比较多而且比较通俗易懂的排序算法，重复地遍历要排序的数组，一次比较两个元素，如果两个元素逆序，则交换，不断重复直到不需要再交换，则完成排序。（时间复杂度O(n²)）  步骤（以下排序都是按从小到大）：  比较相邻的两个元素，如果是第一个元素比第二个元素大，则交换两个元素的位置  遍历数组，两两元素重复第一步的操作，当index到最后一个元素时，这步走">
+<meta property="og:type" content="article">
+<meta property="og:title" content="排序算法">
+<meta property="og:url" content="http://yoursite.com/2020/04/20/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="Ivan">
+<meta property="og:description" content="冒泡排序（Bubble Sort）冒泡排序是用得比较多而且比较通俗易懂的排序算法，重复地遍历要排序的数组，一次比较两个元素，如果两个元素逆序，则交换，不断重复直到不需要再交换，则完成排序。（时间复杂度O(n²)）  步骤（以下排序都是按从小到大）：  比较相邻的两个元素，如果是第一个元素比第二个元素大，则交换两个元素的位置  遍历数组，两两元素重复第一步的操作，当index到最后一个元素时，这步走">
+<meta property="og:image" content="http://i1.fuimg.com/709293/1ad62b254cab62e5.gif">
+<meta property="og:image" content="http://i1.fuimg.com/709293/06ddc02eb4e3a50f.gif">
+<meta property="og:image" content="http://i1.fuimg.com/709293/4dab9b0cad9a017d.gif">
+<meta property="og:image" content="http://i1.fuimg.com/709293/79f92499dcb7b5f3.gif">
+<meta property="og:image" content="http://i1.fuimg.com/709293/44faf77479d68805.gif">
+<meta property="og:image" content="http://i1.fuimg.com/709293/1e5352716f5a3251.png">
+<meta property="og:image" content="http://i1.fuimg.com/709293/df2d21b287e42a7b.gif">
+<meta property="og:image" content="http://i1.fuimg.com/709293/c6efbc01577f5c29.gif">
+<meta property="og:image" content="http://i2.tiimg.com/709293/791f62e1ed967edc.png">
+<meta property="og:image" content="http://i1.fuimg.com/709293/59386523ed941f0d.gif">
+<meta property="article:published_time" content="2020-04-20T06:32:29.000Z">
+<meta property="article:modified_time" content="2020-04-20T09:16:14.877Z">
+<meta property="article:author" content="Ivan">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://i1.fuimg.com/709293/1ad62b254cab62e5.gif">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/04/20/排序算法/"/>
+
+
+
+
+
+  <title>排序算法 | Ivan</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ivan</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/20/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ivan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ivan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">排序算法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-20T14:32:29+08:00">
+                2020-04-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="冒泡排序（Bubble-Sort）"><a href="#冒泡排序（Bubble-Sort）" class="headerlink" title="冒泡排序（Bubble Sort）"></a>冒泡排序（Bubble Sort）</h4><p>冒泡排序是用得比较多而且比较通俗易懂的排序算法，重复地遍历要排序的数组，一次比较两个元素，如果两个元素逆序，则交换，不断重复直到不需要再交换，则完成排序。（时间复杂度O(n²)）</p>
+<p><img src="http://i1.fuimg.com/709293/1ad62b254cab62e5.gif" alt=""></p>
+<p>步骤（以下排序都是按从小到大）：</p>
+<ol>
+<li><p>比较相邻的两个元素，如果是第一个元素比第二个元素大，则交换两个元素的位置</p>
+</li>
+<li><p>遍历数组，两两元素重复第一步的操作，当index到最后一个元素时，这步走完，最后一个元素将是此数组中最大的一个元素</p>
+</li>
+<li><p>不断重复第一步跟第二步的操作，当然最后那些已排好的元素不用再参与，直到没有一对元素需要比较</p>
+<pre><code>public int[] bubble(int arr[]){
+    int temp = 0;
+    boolean flag = false;
+    for(int i = 0;i &lt; arr.length - 1;i++){
+        for(int j = 0;j &lt; arr.length - i - 1;j++){
+            if(arr[j] &gt; arr[j+1]){
+                temp = arr[j+1];
+                arr[j+1] = arr[j];
+                arr[j] = temp;
+                flag = true;
+            }
+        }
+        if(!flag){
+            break;
+        }
+    }
+    return arr;
+}</code></pre></li>
+</ol>
+<h4 id="选择排序（Select-Sort）"><a href="#选择排序（Select-Sort）" class="headerlink" title="选择排序（Select Sort）"></a>选择排序（Select Sort）</h4><p>选择排序比较直观，遍历找到一个比N小并且是在N+1到数组最大长度中这个范围内的最小值，与N进行交换，如此循环（时间复杂度O(n²)）</p>
+<p><img src="http://i1.fuimg.com/709293/06ddc02eb4e3a50f.gif" alt=""></p>
+<p>步骤：</p>
+<ol>
+<li><p>在未排序的数组序列中找到一个最小值，放在排序序列的初始位置</p>
+</li>
+<li><p>接着再从未排序序列中找最小值，放在已排序序列的末尾位置</p>
+</li>
+<li><p>重复第二步的操作，知道未排序序列中没有值</p>
+<pre><code>public int[] select(int[] nums){
+    for(int i = 0;i &lt; nums.length - 1;i++){
+        int min = nums[i];
+        int index = i;
+        for(int j = i + 1;j &lt; nums.length;j++){
+            if(nums[j] &lt; min){
+                min = nums[j];
+                index = j;
+            }
+        }
+        nums[index] = nums[i];
+        nums[i] = min;
+    }
+    return nums;
+}</code></pre><h4 id="插入排序（Insert-Sort）"><a href="#插入排序（Insert-Sort）" class="headerlink" title="插入排序（Insert Sort）"></a>插入排序（Insert Sort）</h4><p>插入排序类似选择排序，不过没有它粗暴，但是比较直观，同样是分已排序序列跟未排序序列，对于每个未排序序列，从已排序序列的末尾往前，找到它对应的位置插入（时间复杂度O(n²)）</p>
+</li>
+</ol>
+<p><img src="http://i1.fuimg.com/709293/4dab9b0cad9a017d.gif" alt=""></p>
+<p>步骤：</p>
+<ol>
+<li><p>将未排序的第一个元素当成已排好序的序列，把第二个元素开始往后当成未排序序列 </p>
+</li>
+<li><p>在未排序序列中从第N个元素开始，每次取未排序序列的第一个元素拿到已排好序序列中从后往前比较，如果被比较的元素比当前元素大，则将被比较的元素往后移一位下标，如果当找到前一个元素比它小，后一个元素比它大时，将此元素插入到这个位置中</p>
+</li>
+<li><p>循环第二步，直到未排序序列中没有元素</p>
+<pre><code>public int[] insertSort(int[] nums){
+    for(int i = 1;i &lt; nums.length;i++){
+        int index = i;
+        int temp = nums[i];
+        for(int j = i;j &gt; 0;j--){
+            if(temp &lt; nums[j-1]){
+                nums[j] = nums[j-1];
+                index--;
+            }
+        }
+        nums[index] = temp;
+    }
+    return nums;
+}</code></pre><h4 id="快速排序（Quick-Sort）"><a href="#快速排序（Quick-Sort）" class="headerlink" title="快速排序（Quick Sort）"></a>快速排序（Quick Sort）</h4><p>快速排序采用了分治思想，也就是先分，再合，将数组分成左右两区。快排有两种方法，左右指针法跟挖坑法。都是定义一个基准，将此数组中比基准小的数放左边，比基准大的数放右边，如此一来就分成两个区，再进行递归（时间复杂度O(nlogn)）</p>
+</li>
+</ol>
+<p><img src="http://i1.fuimg.com/709293/79f92499dcb7b5f3.gif" alt=""></p>
+<ul>
+<li><p>左右指针法</p>
+<p>  步骤：</p>
+<ol>
+<li><p>定义一个基准flag，这里将中位数定为flag</p>
+</li>
+<li><p>将数组最左边的元素标记为左标记，将最右边的元素标记为右标记</p>
+</li>
+<li><p>先从右标记出发，当右标记的值大于flag值时，右标记不断左移，也就是它的下标不断–；直到找到一个小于或者等于flag的</p>
+</li>
+<li><p>然后从左边出发，当左标记的值小于flag值时，左标记不断右移，也就是它的下标不断++；直到找到一个大于或者等于flag的</p>
+</li>
+<li><p>此时交换左标记跟右标记的元素值</p>
+</li>
+<li><p>再进行判断，如果此时左标记或者右标记的值等于flag，一种情况就是有的元素值刚好等于flag，还有一种情况就是防止左标记的下标或者右标记的下标走到flag的位置上时，与之交换发生原地踏步，所以将左标记下标++或者右标记下标–</p>
+</li>
+<li><p>再次移动标记，当两个标记重合时则停止</p>
+</li>
+<li><p>此时完成了第一次操作，比基准小的都在基准左边，比基准大的都在基准右边</p>
+</li>
+<li><p>然后递归左右区的序列</p>
+<pre><code>public int[] quick1(int arr[],int left,int right){
+    int flag = arr[(left + right)/2];
+    int l = left;
+    int r = right;
+    while(l &lt; r){
+        while(arr[r] &gt; flag){
+            r--;
+        }
+        while(arr[l] &lt; flag){
+            l++;
+        }
+        if(l &gt;= r){
+            break;
+        }
+        int temp = arr[r];
+        arr[r] = arr[l];
+        arr[l] = temp;
+        if(arr[r] == flag &amp;&amp; l &lt; r){
+            l++;
+        }
+        if(arr[l] == flag &amp;&amp; l &lt; r){
+            r--;
+        }
+    }
+    if(l == r){
+        l++;
+        r--;
+    }
+    if(left &lt; r){
+        quick1(arr,left,r);
+    }
+    if(right &gt; l){
+        quick1(arr,l, right);
+    }
+    return arr;
+}  </code></pre></li>
+</ol>
+</li>
+<li><p>挖坑法</p>
+<p>  步骤：</p>
+<ol>
+<li><p>定义一个基准flag，这里将数组第一个元素定为flag</p>
+</li>
+<li><p>将数组最左边的元素标记为左标记，将最右边的元素标记为右标记</p>
+</li>
+<li><p>先从右标记出发，当右标记的值大于或等于flag值时，右标记不断左移，也就是它的下标不断–；若当右标记值小于flag而且左标记下标还是小于右标记下标，则将此时的右标记的的值赋给左标记，也给此时的右标记下标挖个坑</p>
+</li>
+<li><p>然后开始从左标记出发，若左标记的值小于或等于flag值，左标记不断右移，也就是它的下标不断++；，若当左标记的值大于flag而且左标记下标还是小于右标记下标，则将上次挖的坑给填上，也就是将此时的左标记的值赋给上次挖的坑右标记下标值，同时再给此时的左标记下标挖个坑</p>
+</li>
+<li><p>如此循环挖坑，当左标记下标跟右标记下标重合或者比它大时，也就是跳出while循环时，记得将最后的坑给填上，将flag丢给它，此时flag左边都小于flag，右边都大于flag</p>
+</li>
+<li><p>然后递归左右区的序列</p>
+<pre><code>public int[] quick2(int arr[],int left,int right){
+    int flag = arr[left];
+    int l = left;
+    int r = right;
+    while(l &lt; r){
+        while(l &lt; r &amp;&amp; arr[r] &gt;= flag){
+            r--;
+        }
+        arr[l] = arr[r];
+        while(l &lt; r &amp;&amp; arr[l] &lt;= flag){
+            l++;
+        }
+        arr[r] = arr[l];
+    }
+    arr[r] = flag;
+    if(l == r){
+        l++;
+        r--;
+    }
+    if(left &lt; r){
+        quick1(arr,left,r);
+    }
+    if(right &gt; l){
+        quick1(arr,l, right);
+    }
+    return arr;
+}</code></pre><h4 id="希尔排序（Shell-Sort）"><a href="#希尔排序（Shell-Sort）" class="headerlink" title="希尔排序（Shell Sort）"></a>希尔排序（Shell Sort）</h4><p>希尔排序是对插入排序的一种改进，以往插入排序将未排序的数组插入已排序数组中时，每次只能移动一位元素，使得效率非常低。希尔排序会优先比较距离较远的元素，先将整个待排序的记录序列分割成为若干子序列分别进行直接插入排序，待整个序列中的记录“基本有序”时，再对全体记录进行依次直接插入排序（时间复杂度O(nlogn)）</p>
+</li>
+</ol>
+</li>
+</ul>
+<p><img src="http://i1.fuimg.com/709293/44faf77479d68805.gif" alt=""></p>
+<p>步骤：</p>
+<ol>
+<li>选择一个增量，一般是数组长度除2</li>
+<li>根据增量的大小，进行增量次数的排序</li>
+<li>每次排序，将最近增量相隔的两个数进行比较，如逆序则交换</li>
+<li>当排序增量次数的排序结束，再次将增量/2，直到增量值等于一</li>
+</ol>
+<p><img src="http://i1.fuimg.com/709293/1e5352716f5a3251.png" alt=""></p>
+<pre><code>public int[] shell(int nums[]){
+    int number = nums.length/2;
+    while(number &gt;= 1){
+        for(int i = number;i &lt; nums.length;i++){
+            int temp = nums[i];
+            int j = i - number;
+            while(j &gt;= 0 &amp;&amp; temp &lt; nums[j]){
+                nums[j + number] = nums[j];
+                j -= number;
+            }
+            nums[j + number] = temp;
+        }
+        number /= 2;
+    }
+    return nums;
+}</code></pre><h4 id="计数排序（Count-Sort）"><a href="#计数排序（Count-Sort）" class="headerlink" title="计数排序（Count Sort）"></a>计数排序（Count Sort）</h4><p>计数排序的核心在于将输入的数据值转化为键存储在额外开辟的数组空间中。作为一种线性时间复杂度的排序，计数排序要求输入的数据必须是有确定范围的整数。同时这也就成了它的缺点，但如果数组的值之间范围相差太大，新开辟的空间就要非常大，比如，一跟一亿，这就相当于要new一个大小为一亿的数组。（时间复杂度O(n+k)）</p>
+<p><img src="http://i1.fuimg.com/709293/df2d21b287e42a7b.gif" alt=""></p>
+<p>步骤：</p>
+<ol>
+<li><p>遍历初始数组，找出最小值min跟最大值max</p>
+</li>
+<li><p>生成一个新数组，长度大小为(max - min + 1),新数组的下标对应的值是旧数组对应值的出现个数，这里不好理解，比如旧数组中最大值是10，最小值是2,然后3出现了两次，所以对应的新数组，下标为1的值等于2，也就是两次，下标为0的值代表着最小值2出现的次数；</p>
+</li>
+<li><p>最后遍历新数组，根据新数组中各个下标值去赋给旧数组，当然要记得赋给旧数组的时候将新数组的下标对应的值加上min，比如新数组的下标1的值为2，那么要赋给旧数组的话，就相当于3要出现两次。</p>
+</li>
+<li><p>（补充：这里可以不找出min，就直接找max元素，新数组的大小就等于（max+1），但是生成的新数组就比较耗空间，相反而来，过程就不会那么饶，一会减一会加了）</p>
+<pre><code>public int[] count(int arr[]){
+    int min = getMin(arr);
+    int max = getMax(arr);
+    int[] result = new int[max - min + 1];
+    for(int i : arr){
+        result[i - min]++;
+    }
+    int index = 0;
+    for(int i = 0;i &lt; result.length;i++){
+        while(result[i] &gt; 0){
+            arr[index] = i + min;
+            result[i]--;
+            index++;
+        }
+    }
+    return arr;
+}
+private int getMin(int arr[]){
+    int temp = arr[0];
+    for(int i : arr){
+        if(i &lt; temp){
+            temp = i;
+        }
+    }
+    return temp;
+}
+private int getMax(int arr[]){
+    int temp = arr[0];
+    for(int i : arr){
+        if(i &gt; temp){
+            temp = i;
+        }
+    }
+    return temp;
+}</code></pre><h4 id="归并排序（Merge-Sort）"><a href="#归并排序（Merge-Sort）" class="headerlink" title="归并排序（Merge Sort）"></a>归并排序（Merge Sort）</h4><p>这里同样采用了分治思想，想将原本数组一次又一次地对半拆分，直到每片区域只有一个元素，就算拆分完成，然后将拆分的每片区域进行合并，合并时，按升序比较，将较小的值先丢进申请的数组空间中，按同样的逻辑重复比较，直到所有的值都在一个区域，也就是同个数组</p>
+</li>
+</ol>
+<p><img src="http://i1.fuimg.com/709293/c6efbc01577f5c29.gif" alt=""></p>
+<p>步骤：</p>
+<ol>
+<li>首先将原本数组不断拆分成左右两片区域，知道区域中元素个数为1</li>
+<li>设定两个指针，最初位置分别为两个已经排序序列的起始位置</li>
+<li>比较拆分后的两个区域的元素，也就是比较两指针指向的元素，将相对小的元素放入到合并的空间中，并将指针移动到下一位</li>
+<li>循环第三步直到左右某一区域到达末尾</li>
+<li>将未到达末尾的区域剩余部分全部加入到合并区域中</li>
+</ol>
+<p><img src="http://i2.tiimg.com/709293/791f62e1ed967edc.png" alt=""></p>
+<pre><code>public void merge(int[] arr,int left,int right,int[] temp){
+    if(left &lt; right){
+        int mid = (left + right) / 2;
+        merge(arr,left,mid,temp);
+        merge(arr,mid+1,right,temp);
+        mergeResult(arr,left,mid,right,temp);
+    }
+}
+public void mergeResult(int arr[],int left,int mid,int right,int[] temp){
+    int k = 0;
+    int i = left;
+    int j = mid + 1;
+    while(i &lt;= mid &amp;&amp; j &lt;= right){
+        if(arr[i] &lt;= arr[j]){
+            temp[k] = arr[i];
+            i++;
+            k++;
+        }else{
+            temp[k] = arr[j];
+            j++;
+            k++;
+        }
+    }
+    while(i &lt;= mid){
+        temp[k] = arr[i];
+        i++;
+        k++;
+    }
+    while(j &lt;= right){
+        temp[k] = arr[j];
+        j++;
+        k++;
+    }
+    k = 0;
+    int tempLeft = left;
+    while(tempLeft &lt;= right){
+        arr[tempLeft] = temp[k];
+        tempLeft++;
+        k++;
+    }
+}</code></pre><h4 id="基数排序（Radix-Sort）"><a href="#基数排序（Radix-Sort）" class="headerlink" title="基数排序（Radix Sort）"></a>基数排序（Radix Sort）</h4><p>基于桶排思想，生成十个桶，对应0-9，按照数组中最大的那个数的位数进行循环，从个位数开始取模，得到的值插入相对应的index桶中，并将此序列桶的元素个数标记加一，最后再将桶中的元素重新赋给原来的数组，再进行循环。（时间复杂度O(n*k)）</p>
+<p><img src="http://i1.fuimg.com/709293/59386523ed941f0d.gif" alt=""></p>
+<p>步骤：</p>
+<ol>
+<li><p>循环初始数组，找出最大值，并找出最大值的长度</p>
+</li>
+<li><p>定义一个二维数组，也就是桶，第一个下标代表桶的顺序，第二个代表桶中的值，（这里用了数组来暂放元素，由于空间不确定，所以生成了一个很大数组，当然也可以用链表的方式。）再定一个一维数组，表示桶中各元素的位置。</p>
+</li>
+<li><p>从低位开始，计算初始数组中各个元素的低位数的值，并放入相对应的桶中</p>
+</li>
+<li><p>如此一次后，将各个不为空的桶的值按照桶的顺序一一取出来。</p>
+</li>
+<li><p>再进行高位的计算，循环34步骤，直到最高位排序完成</p>
+<pre><code>public int[] radix(int[] arr){
+    int [][]bucket = new int[10][arr.length];
+    int []bucketIndex = new int[10];
+    int max = arr[0];
+    for(int i = 1;i &lt; arr.length;i++){
+        if(arr[i] &gt; max){
+            max = arr[i];
+        }
+    }
+    int length = (max + &quot;&quot;).length();
+    for(int j = 0,n = 1;j &lt; length;j++,n *= 10){
+        for(int i = 0;i &lt; arr.length;i++){
+            int digit = arr[i] / n % 10;
+            bucket[digit][bucketIndex[digit]] = arr[i];
+            bucketIndex[digit]++;
+        }
+        int k = 0;
+        for(int i = 0;i &lt; bucketIndex.length;i++){
+            if(bucketIndex[i] != 0){
+                for(int l = 0;l &lt; bucketIndex[i];l++){
+                    arr[k++] = bucket[i][l];
+                }
+            }
+            bucketIndex[i] = 0;
+        }
+    }
+    return arr;
+}</code></pre></li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/11/redis/" rel="next" title="redis">
+                <i class="fa fa-chevron-left"></i> redis
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Ivan</p>
+              <p class="site-description motion-element" itemprop="description">个人博客</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#冒泡排序（Bubble-Sort）"><span class="nav-number">1.</span> <span class="nav-text">冒泡排序（Bubble Sort）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#选择排序（Select-Sort）"><span class="nav-number">2.</span> <span class="nav-text">选择排序（Select Sort）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#插入排序（Insert-Sort）"><span class="nav-number">3.</span> <span class="nav-text">插入排序（Insert Sort）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#快速排序（Quick-Sort）"><span class="nav-number">4.</span> <span class="nav-text">快速排序（Quick Sort）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#希尔排序（Shell-Sort）"><span class="nav-number">5.</span> <span class="nav-text">希尔排序（Shell Sort）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计数排序（Count-Sort）"><span class="nav-number">6.</span> <span class="nav-text">计数排序（Count Sort）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#归并排序（Merge-Sort）"><span class="nav-number">7.</span> <span class="nav-text">归并排序（Merge Sort）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基数排序（Radix-Sort）"><span class="nav-number">8.</span> <span class="nav-text">基数排序（Radix Sort）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ivan</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
