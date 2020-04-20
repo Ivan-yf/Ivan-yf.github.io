@@ -152,9 +152,9 @@
         nums[i] = min;
     }
     return nums;
-}</code></pre><h4 id="插入排序（Insert-Sort）"><a href="#插入排序（Insert-Sort）" class="headerlink" title="插入排序（Insert Sort）"></a>插入排序（Insert Sort）</h4><p>插入排序类似选择排序，不过没有它粗暴，但是比较直观，同样是分已排序序列跟未排序序列，对于每个未排序序列，从已排序序列的末尾往前，找到它对应的位置插入（时间复杂度O(n²)）</p>
-</li>
+}</code></pre></li>
 </ol>
+<h4 id="插入排序（Insert-Sort）"><a href="#插入排序（Insert-Sort）" class="headerlink" title="插入排序（Insert Sort）"></a>插入排序（Insert Sort）</h4><p>插入排序类似选择排序，不过没有它粗暴，但是比较直观，同样是分已排序序列跟未排序序列，对于每个未排序序列，从已排序序列的末尾往前，找到它对应的位置插入（时间复杂度O(n²)）</p>
 <p><img src="http://i1.fuimg.com/709293/4dab9b0cad9a017d.gif" alt=""></p>
 <p>步骤：</p>
 <ol>
@@ -176,9 +176,9 @@
         nums[index] = temp;
     }
     return nums;
-}</code></pre><h4 id="快速排序（Quick-Sort）"><a href="#快速排序（Quick-Sort）" class="headerlink" title="快速排序（Quick Sort）"></a>快速排序（Quick Sort）</h4><p>快速排序采用了分治思想，也就是先分，再合，将数组分成左右两区。快排有两种方法，左右指针法跟挖坑法。都是定义一个基准，将此数组中比基准小的数放左边，比基准大的数放右边，如此一来就分成两个区，再进行递归（时间复杂度O(nlogn)）</p>
-</li>
+}</code></pre></li>
 </ol>
+<h4 id="快速排序（Quick-Sort）"><a href="#快速排序（Quick-Sort）" class="headerlink" title="快速排序（Quick Sort）"></a>快速排序（Quick Sort）</h4><p>快速排序采用了分治思想，也就是先分，再合，将数组分成左右两区。快排有两种方法，左右指针法跟挖坑法。都是定义一个基准，将此数组中比基准小的数放左边，比基准大的数放右边，如此一来就分成两个区，再进行递归（时间复杂度O(nlogn)）</p>
 <p><img src="http://i1.fuimg.com/709293/79f92499dcb7b5f3.gif" alt=""></p>
 <ul>
 <li><p>左右指针法</p>
@@ -279,11 +279,11 @@
         quick1(arr,l, right);
     }
     return arr;
-}</code></pre><h4 id="希尔排序（Shell-Sort）"><a href="#希尔排序（Shell-Sort）" class="headerlink" title="希尔排序（Shell Sort）"></a>希尔排序（Shell Sort）</h4><p>希尔排序是对插入排序的一种改进，以往插入排序将未排序的数组插入已排序数组中时，每次只能移动一位元素，使得效率非常低。希尔排序会优先比较距离较远的元素，先将整个待排序的记录序列分割成为若干子序列分别进行直接插入排序，待整个序列中的记录“基本有序”时，再对全体记录进行依次直接插入排序（时间复杂度O(nlogn)）</p>
-</li>
+}</code></pre></li>
 </ol>
 </li>
 </ul>
+<h4 id="希尔排序（Shell-Sort）"><a href="#希尔排序（Shell-Sort）" class="headerlink" title="希尔排序（Shell Sort）"></a>希尔排序（Shell Sort）</h4><p>希尔排序是对插入排序的一种改进，以往插入排序将未排序的数组插入已排序数组中时，每次只能移动一位元素，使得效率非常低。希尔排序会优先比较距离较远的元素，先将整个待排序的记录序列分割成为若干子序列分别进行直接插入排序，待整个序列中的记录“基本有序”时，再对全体记录进行依次直接插入排序（时间复杂度O(nlogn)）</p>
 <p><img src="http://i1.fuimg.com/709293/44faf77479d68805.gif" alt=""></p>
 <p>步骤：</p>
 <ol>
@@ -353,9 +353,9 @@ private int getMax(int arr[]){
         }
     }
     return temp;
-}</code></pre><h4 id="归并排序（Merge-Sort）"><a href="#归并排序（Merge-Sort）" class="headerlink" title="归并排序（Merge Sort）"></a>归并排序（Merge Sort）</h4><p>这里同样采用了分治思想，想将原本数组一次又一次地对半拆分，直到每片区域只有一个元素，就算拆分完成，然后将拆分的每片区域进行合并，合并时，按升序比较，将较小的值先丢进申请的数组空间中，按同样的逻辑重复比较，直到所有的值都在一个区域，也就是同个数组</p>
-</li>
+}</code></pre></li>
 </ol>
+<h4 id="归并排序（Merge-Sort）"><a href="#归并排序（Merge-Sort）" class="headerlink" title="归并排序（Merge Sort）"></a>归并排序（Merge Sort）</h4><p>这里同样采用了分治思想，想将原本数组一次又一次地对半拆分，直到每片区域只有一个元素，就算拆分完成，然后将拆分的每片区域进行合并，合并时，按升序比较，将较小的值先丢进申请的数组空间中，按同样的逻辑重复比较，直到所有的值都在一个区域，也就是同个数组</p>
 <p><img src="http://i1.fuimg.com/709293/c6efbc01577f5c29.gif" alt=""></p>
 <p>步骤：</p>
 <ol>
@@ -452,7 +452,7 @@ public void mergeResult(int arr[],int left,int mid,int right,int[] temp){
                                                                         
                                     </div>
                                     <footer class="article-footer">
-                                        <a data-url="http://yoursite.com/2020/04/20/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" data-id="ck98bjdt00007i8vh7krid4g6" class="article-share-link">
+                                        <a data-url="http://yoursite.com/2020/04/20/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" data-id="ck98buxdz0006x4vh1svw1rjd" class="article-share-link">
                                             Share
                                         </a>
                                         
@@ -538,7 +538,7 @@ public void mergeResult(int arr[],int left,int mid,int right,int[] temp){
                                                                         
                                     </div>
                                     <footer class="article-footer">
-                                        <a data-url="http://yoursite.com/2020/04/11/redis/" data-id="ck98bjdsl0000i8vh4k6bd2fx" class="article-share-link">
+                                        <a data-url="http://yoursite.com/2020/04/11/redis/" data-id="ck98buxdu0002x4vhacxse993" class="article-share-link">
                                             Share
                                         </a>
                                         
@@ -596,7 +596,7 @@ public void mergeResult(int arr[],int left,int mid,int right,int[] temp){
                                                                         
                                     </div>
                                     <footer class="article-footer">
-                                        <a data-url="http://yoursite.com/2020/03/04/boke/" data-id="ck98bjdsu0002i8vhg1z71oa9" class="article-share-link">
+                                        <a data-url="http://yoursite.com/2020/03/04/boke/" data-id="ck98buxdm0000x4vhbnv91zbd" class="article-share-link">
                                             Share
                                         </a>
                                         
@@ -724,7 +724,7 @@ public class Queen8 {
                                                                         
                                     </div>
                                     <footer class="article-footer">
-                                        <a data-url="http://yoursite.com/2020/02/24/%E5%85%AB%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98-%E9%80%92%E5%BD%92%E5%9B%9E%E6%BA%AF%E5%AE%9E%E7%8E%B0/" data-id="ck98bjdsz0006i8vh7cts8q3l" class="article-share-link">
+                                        <a data-url="http://yoursite.com/2020/02/24/%E5%85%AB%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98-%E9%80%92%E5%BD%92%E5%9B%9E%E6%BA%AF%E5%AE%9E%E7%8E%B0/" data-id="ck98buxdw0004x4vh5orgfbq2" class="article-share-link">
                                             Share
                                         </a>
                                         
@@ -914,7 +914,7 @@ public class Queen8 {
                                                                         
                                     </div>
                                     <footer class="article-footer">
-                                        <a data-url="http://yoursite.com/2020/02/17/%E7%BA%A6%E7%91%9F%E5%A4%AB%E7%8E%AF/" data-id="ck98bjdt10009i8vhgxl61gs7" class="article-share-link">
+                                        <a data-url="http://yoursite.com/2020/02/17/%E7%BA%A6%E7%91%9F%E5%A4%AB%E7%8E%AF/" data-id="ck98buxe10008x4vhddkceuta" class="article-share-link">
                                             Share
                                         </a>
                                         
@@ -982,7 +982,7 @@ public class Queen8 {
                                                                         
                                     </div>
                                     <footer class="article-footer">
-                                        <a data-url="http://yoursite.com/2020/02/16/%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2/" data-id="ck98bjdsy0005i8vh2knhh3cp" class="article-share-link">
+                                        <a data-url="http://yoursite.com/2020/02/16/%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2/" data-id="ck98buxe00007x4vhbgpg2h45" class="article-share-link">
                                             Share
                                         </a>
                                         
